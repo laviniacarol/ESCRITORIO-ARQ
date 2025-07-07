@@ -5,7 +5,7 @@ import LikedFilled from '../../assets/like-filled.svg'
 import Liked from '../../assets/like.svg'
 
 
-function ProjectsList(props) {
+function ProjectsList() {
     return (
         <div className='projects-section'>
            <div className='projects-hero'>
