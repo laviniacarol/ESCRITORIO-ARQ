@@ -5,10 +5,14 @@ import About from './pages/About'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 
+// UTILS
+import ScrollToTop from './utils/ScrollTop'
+
 function App() {
 
   return (
     <Router>
+      <ScrollToTop/>
     <Routes>
        <Route path="/" element={<Home/>}></Route>
        <Route path="/about" element={<About/>}></Route>

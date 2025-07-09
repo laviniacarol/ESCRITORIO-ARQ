@@ -10,7 +10,7 @@ header ul, li {
 }
 
 nav {
-    display: none;
+    display: flex;
 }
 
 nav a {
@@ -40,6 +40,7 @@ nav a:hover {
     border-left: 10px solid #333;
     flex-direction: column;
     height: 100%;
+    display: none;
     padding: 37px;
     position: fixed;
     right: 0;
