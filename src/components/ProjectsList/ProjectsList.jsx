@@ -33,6 +33,8 @@ function ProjectsList() {
             </div>
             <div className='projects-grid'>
                 {
+                 projects ?
+
                     projects.map((project) => (
                         <div className='projects-card d-flex jc-center al-center fd-column' key={project.id}>
                             <div
@@ -43,7 +45,7 @@ function ProjectsList() {
                             <p>{project.subtitle}</p>
                             <img src={LikedFilled} height="20px" />
                         </div>
-                    ))
+                    )) :null
                 }
             </div>
         </div>

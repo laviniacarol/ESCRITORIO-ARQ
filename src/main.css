@@ -43,6 +43,27 @@ a {
   color: #F6F6F6;
 }
 
+.grey-1-color {
+  color: #4D5053;
+}
+
+/* FORM */
+.form-input {
+  border: none;
+  border-bottom: 1px solid #292F36;
+  color: #292F36;
+  font-size: 22px;
+  font-family: "Jost", sans-serif;
+  padding: 0 0 13px 0;
+  outline: none;
+  width: 100%
+}
+
+.form-input::placeholder {
+  color: #292F36;
+  opacity: 1;
+}
+
 
 /* TYPOGRAPHY */
 
