@@ -1,4 +1,5 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 // ASSETS
 import './Footer.css'
@@ -10,70 +11,72 @@ import LinkedinIcon from "../../assets/linkedin-icon.svg";
 import InstagramIcon from "../../assets/instagram-icon.svg";
 import TwitterIcon from "../../assets/twitter-icon.svg";
 
+// COMPONENT
+import Button from "../Button/Button";
 
-
+// CONTEXT
+import { AppContext } from "../../contexts/AppContext";
 
 function Footer() {
+    const { language, languages, setLanguage, loading } = useContext(AppContext);
+
+    if (loading || !languages || !languages[language]) return null;
+
+    const lang = languages[language];
+
+    const changeLanguage = (country) => {
+        setLanguage(country);
+    };
+
     return (
         <footer>
             <div className="container">
-                    <div className="d-flex jc-space-between mobile-fd-column">
-                        <div className="footer-logo-col">
-                            <img src={Logo} className="footer-logo" />
-                            <p className="grey-1-color">
-                                A escola que prepara você para as profissões em alta no mercado de trabalho.
-                            </p>
-                            <div className="d-flex social-links">
-                                <a href="#" target="_blank">
-                                    <img src={FacebookIcon}/>
-                                </a>
-                                <a href="#" target="_blank">
-                                    <img src={TwitterIcon}/>
-                                </a>
-                                <a href="#" target="_blank">
-                                    <img src={LinkedinIcon}/>
-                                </a>
-                                <a href="#" target="_blank">
-                                    <img src={InstagramIcon}/>
-                                </a>
-                            </div>
+                <div className="d-flex jc-space-between mobile-fd-column">
+                    <div className="footer-logo-col">
+                        <img src={Logo} className="footer-logo" />
+                        <p className="grey-1-color">
+                            {lang.general.footerLogoText}
+                        </p>
+                        <div className="d-flex social-links">
+                            <a href="#" target="_blank"><img src={FacebookIcon} /></a>
+                            <a href="#" target="_blank"><img src={TwitterIcon} /></a>
+                            <a href="#" target="_blank"><img src={LinkedinIcon} /></a>
+                            <a href="#" target="_blank"><img src={InstagramIcon} /></a>
+                        </div>
+                    </div>
+
+                    <div className="d-flex mobile-fd-column">
+                        <div className="footer-col">
+                            <h3>{lang.general.pages}</h3>
+                            <ul>
+                                <li><Link to="/">{lang.menu.home}</Link></li>
+                                <li><Link to="/about">{lang.menu.about}</Link></li>
+                                <li><Link to="/projects">{lang.menu.projects}</Link></li>
+                                <li><Link to="/contact">{lang.menu.contact}</Link></li>
+                            </ul>
                         </div>
 
-                        <div className="d-flex mobile-fd-column">
-                              <div className="footer-col">
-                                <h3>Pages</h3>
-                                <ul>
-                                <li><Link to='/'> Home </Link></li>
-                                <li><Link to='/about'> About </Link></li>
-                                <li><Link to='/projects'> Projects </Link></li>
-                                <li><Link to='/contact'> Contact </Link></li>
-
-                               </ul>
-                              </div>
-                             
-                              <div className="footer-col">
-                                <h3>Contact</h3>
-                                <p className="grey-1-color">R. Justino Cobra, 61 – Vila Ema | São José dos Campos – SP | CEP 12243-030 </p>
-                                <p className="grey-1-color">suporte@escoladnc.com.br</p>
-                                <p className="grey-1-color">(19) 99187-4342</p>
-                       
-                              </div>
-                             
-                             
-
-                            </div>
+                        <div className="footer-col">
+                            <h3>{lang.menu.contact}</h3>
+                            <p className="grey-1-color">R. Justino Cobra, 61 – Vila Ema | São José dos Campos – SP | CEP 12243-030</p>
+                            <p className="grey-1-color">suporte@escoladnc.com.br</p>
+                            <p className="grey-1-color">(19) 99187-4342</p>
+                        </div>
                     </div>
+                </div>
 
-                    <div className="d-flex jc-space-between footer-copy">
+                <div className="d-flex jc-space-between footer-copy">
                     <p className="grey-1-color">Copyright © DNC - 2024</p>
                     <div className="langs-area d-flex">
-                     <img src={BrazilIcon} height="29px"/>
-                     <img src={UsaIcon} height="29px"/>
+                        <Button buttonStyle="unstyled" onClick={() => changeLanguage('br')}>
+                            <img src={BrazilIcon} height="29px" />
+                        </Button>
+                        <Button buttonStyle="unstyled" onClick={() => changeLanguage('en')}>
+                            <img src={UsaIcon} height="29px" />
+                        </Button>
                     </div>
-                    </div>
-
-
                 </div>
+            </div>
         </footer>
     );
 }
